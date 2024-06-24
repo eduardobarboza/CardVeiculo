@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableWithoutFeedback } from "react-native-web";
+import { StyleSheet, View, Text, TouchableWithoutFeedback, Button } from "react-native-web";
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import { Pressable } from 'react-native';
@@ -7,16 +7,23 @@ import { Pressable } from 'react-native';
 const Home = () => {
 
     const [isHovered, setIsHovered] = useState(false);
+    const [gradientColors, setGradientColors] = useState(['#4c669f', '#3b5998', '#192f6a']);
+    const changeGradientColors = () => {
+    const newColors = gradientColors[0] === '#4c669f' 
+      ? ['#000000', '#434343', '#666666']
+      : ['#4c669f', '#3b5998', '#192f6a']; 
+
+    setGradientColors(newColors);
+  };
 
     return (
         
-        <View style={estilo.container}>
-            <LinearGradient
-              colors={['#b3cde0', '#6497b1', '#005b96']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={estilo.background}
+        
+            <LinearGradient colors={gradientColors} style={estilo.linearGradient}
             >
+              <View style={estilo.content}>
+                <Button title="Alterar Cor do Gradiente" onPress={changeGradientColors} />
+              </View>
               <Text style={estilo.text}>Seja Bem Vindo Usuário</Text>
 
               <TouchableWithoutFeedback
@@ -27,8 +34,9 @@ const Home = () => {
                   <Text style={estilo.click}>Começar Agora</Text>
                 </View>
               </TouchableWithoutFeedback>
+
             </LinearGradient>
-        </View>
+        
     )
 }
 
@@ -37,7 +45,7 @@ const estilo = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        //backgroundColor: 'blue',
+      
     },
     background: {
       width: '100%',
@@ -62,6 +70,20 @@ const estilo = StyleSheet.create({
       click: {
         color: '#ffffff',
         fontSize: 16,
+      },
+      troca: {
+        width: 30,
+        height: 30,
+        padding: 10,
+      },
+      linearGradient: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      content: {
+        justifyContent: 'center',
+        alignItems: 'center',
       },
 
 });
