@@ -1,10 +1,12 @@
-import { Text, Image, ScrollView } from "react-native";
+import { View, Text, ScrollView } from "react-native";
+import { Image } from 'expo-image';
+
 import { Ionicons } from '@expo/vector-icons'
 import estilo from './estilo'
 
 export default function Detalhes(props) {
-    let veiculo = props.route.params;
-    console.log(veiculo);
+    let veiculo = props.route.params;console.log(veiculo)
+    console.log(veiculo.fotos);
     const voltar = () => { props.navigation.goBack(); };
     return (
         <View style={estilo.container}>
@@ -15,7 +17,7 @@ export default function Detalhes(props) {
                 <View style={estilo.slides}>
                     <ScrollView horizontal={true}>
                     {
-                        veiculo.fotos.map(foto=>(<Image style={estilo.foto} source={require(`../../assets/img_veiculos/1.1.webp`)} />))
+                        veiculo.fotos.map(foto=>(<Image key={foto} style={estilo.foto} source={`../../assets/img_veiculos/${foto}`} />))
                     }
                     </ScrollView>
                 </View>

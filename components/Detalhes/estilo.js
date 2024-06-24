@@ -25,7 +25,8 @@ const estilo = StyleSheet.create({
     },
     slides: {
         flexDirection: 'row',
-        width: 400, height: 300
+        width: 400, 
+        height: 300
     },
     foto: {
         width: 450,
@@ -33,7 +34,9 @@ const estilo = StyleSheet.create({
     },
     info: {
         width: 350,
-        textAlign: 'left'
+        textAlign: 'left',
+        fontWeight: 'bold', 
+        fontSize: 50
     }
 })
 
